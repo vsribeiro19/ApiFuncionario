@@ -1,9 +1,11 @@
 ﻿using APIFuncionarios.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace APIFuncionarios.Models
 {
     public class FuncionarioModel
     {
+        [Key]
         public int Id { get; set; }
         public string Nome { get; set; } = "";
         public string SobreNome { get; set; } = "";
