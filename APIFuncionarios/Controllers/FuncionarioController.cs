@@ -14,10 +14,35 @@ namespace APIFuncionarios.Controllers
         {
             _funcionarioInterface = funcionarioInterface;
         }
+
+
         [HttpGet]
         public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> GetFuncionarios()
         {
             return Ok(await _funcionarioInterface.GetFuncionarios());
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServiceResponse<FuncionarioModel>>> GetFuncionarioById(int id)
+        {
+            ServiceResponse<FuncionarioModel> serviceResponse = await _funcionarioInterface.GetFuncionarioById(id);
+
+            return Ok(serviceResponse);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> CreateFuncionarios(FuncionarioModel novoFuncionario)
+        {
+            return Ok(await _funcionarioInterface.CreateFuncionarios(novoFuncionario));
+        }
+
+        [HttpPut("inativaFuncionario/{id}")]
+        public async Task<ActionResult<ServiceResponse<List<FuncionarioModel>>>> InativaFuncionarios(int id)
+        {
+            ServiceResponse<List<FuncionarioModel>> serviceResponse = await _funcionarioInterface.InativaFuncionario(id);
+
+            return Ok(serviceResponse);
+        }
+
     }
 }
